@@ -15,12 +15,10 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": [
+  "include": [, "next.config.js"
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "environment.xys",
-    "firebase.js"
   ],
   "exclude": ["node_modules"]
 }
