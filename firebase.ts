@@ -1,15 +1,14 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDX_SEfrh_5-FTWKR582z2-CrDTrGBYNfU',
-  authDomain: 'cube-timer-8323e.firebaseapp.com',
-  projectId: 'cube-timer-8323e',
-  storageBucket: 'cube-timer-8323e.appspot.com',
-  messagingSenderId: '379683188326',
-  appId: '1:379683188326:web:b4e04dd3a5a9dde15d47a7',
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
