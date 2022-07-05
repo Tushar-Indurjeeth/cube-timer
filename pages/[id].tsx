@@ -6,13 +6,20 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { auth, db } from '../firebase';
 import NextNProgress from 'nextjs-progressbar';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  orderBy,
+  query,
+} from 'firebase/firestore';
 import { convertTime } from '../utils/convertTime';
 import { useRouter } from 'next/router';
 import { Navbar } from '../components/Navbar';
 import { ChevronDoubleLeftIcon } from '@heroicons/react/solid';
 import { CovertedTime, FirebaseRecord } from '../typings';
 import Head from 'next/head';
+import { getApp, getApps, initializeApp } from 'firebase/app';
 
 interface Props {
   scores: string;
