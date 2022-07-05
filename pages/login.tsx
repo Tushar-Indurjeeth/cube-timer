@@ -6,6 +6,7 @@ import { CubeTransparentIcon } from '@heroicons/react/solid';
 
 import { provider } from '../firebase';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const Login: NextPage = () => {
   const auth = getAuth();
@@ -19,6 +20,10 @@ const Login: NextPage = () => {
 
   return (
     <div className="h-screen grid place-content-center content-evenly  bg-neutral-800">
+      <Head>
+        <title>Cube timer login</title>
+        <link rel="icon" href="/favicon.svg" />
+      </Head>
       <h1 className="grid content-center text-5xl text-[#f8f8ffb4]">
         Cube Timer
       </h1>

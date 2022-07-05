@@ -12,6 +12,7 @@ import { useRouter } from 'next/router';
 import { Navbar } from '../components/Navbar';
 import { ChevronDoubleLeftIcon } from '@heroicons/react/solid';
 import { CovertedTime, FirebaseRecord } from '../typings';
+import Head from 'next/head';
 
 interface Props {
   scores: string;
@@ -48,6 +49,10 @@ const Scores = ({ scores }: Props) => {
 
   return (
     <div className="bg-neutral-800">
+      <Head>
+        <title>Cube timer</title>
+        <link rel="icon" href="/favicon.svg" />
+      </Head>
       <Navbar />
       <div className="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2">
         <div className="flex flex-col text-2xl text-[#f8f8ff] space-y-5">

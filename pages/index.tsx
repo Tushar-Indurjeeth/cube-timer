@@ -15,9 +15,9 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Rubiks cube timer</title>
+        <title>Cube timer</title>
         <meta name="description" content="Rubiks cube scrambler and timer" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
 
       <Navbar />
