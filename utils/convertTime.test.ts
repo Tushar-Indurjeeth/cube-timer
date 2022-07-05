@@ -1,4 +1,4 @@
-import { convertTime, convertTimeW } from './convertTime';
+import { convertTime } from './convertTime';
 
 describe('convertTime()', () => {
   it('should return a string', () => {
