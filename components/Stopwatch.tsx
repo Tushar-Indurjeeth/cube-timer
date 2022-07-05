@@ -31,12 +31,13 @@ export const Stopwatch: React.FC = () => {
   const [centiseconds, setCentiseconds] = useState<string>('00');
 
   const [scrambleMoves, setScrambleMoves] = useState<string>(scramble());
+  const [keyDown, setKeyDown] = useState<boolean>(false);
+
   const [docRef, setDocRef] = useState<DocumentReference | null>(null);
-  let userId: string;
+  const [user, loading] = useAuthState(auth);
 
   const router = useRouter();
-
-  const [user, loading] = useAuthState(auth);
+  let userId: string;
 
   const MySwal = withReactContent(Swal);
 
@@ -110,6 +111,8 @@ export const Stopwatch: React.FC = () => {
       timestamp: serverTimestamp(),
     };
 
+    setDocRef(null);
+
     const docRef = await addDoc(collection(db, userId), record);
 
     setDocRef(docRef);
@@ -124,6 +127,7 @@ export const Stopwatch: React.FC = () => {
   // keyName: string, e: KeyboardEvent, handle: any
   const onKeyUp = () => {
     if (!timerOn && timerTime === 0) {
+      setKeyDown(false);
       startTimer();
     } else if (timerOn && timerTime > 0) {
       stopTimer();
@@ -135,25 +139,39 @@ export const Stopwatch: React.FC = () => {
 
   const onKeyDown = () => {
     if (!timerOn) {
+      setKeyDown(true);
       resetTimerText();
     }
   };
 
   return (
     <Hotkeys keyName="space" onKeyDown={onKeyDown} onKeyUp={onKeyUp}>
-      <div className="h-full flex flex-col text-center">
-        <div className="py-5 text-5xl text-gray-100 tracking-widest">
+      <div className={`h-full flex flex-col text-center `}>
+        <div
+          className={`py-5 text-5xl text-gray-100 tracking-widest ${
+            timerOn && 'hidden'
+          }`}
+        >
           {scrambleMoves}
         </div>
         <div className="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2">
-          <div className="text-8xl text-gray-100 mb-20">
+          <div
+            className={`text-8xl text-gray-100 mb-20 ${
+              keyDown &&
+              'transition duration-200 ease-in transform sm:scale-125 hover:z-50'
+            }`}
+          >
             {`${minutes} : ${seconds} : ${centiseconds}`}
           </div>
 
-          <div className={`${docRef != null && 'flex space-x-2 w-1/2 m-auto'}`}>
+          <div
+            className={`${docRef != null && 'flex space-x-2 w-1/2 m-auto'} ${
+              timerOn && 'hidden'
+            }`}
+          >
             <button
               onClick={() => router.push(userId)}
-              className="text-2xl text-gray-300"
+              className={`text-2xl text-gray-300 `}
             >
               View Your Stats
             </button>

@@ -32,7 +32,7 @@ const Login: NextPage = () => {
           <div className="w-7 h-7 self-center">
             <Image
               src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-              alt=""
+              alt="google logo"
               objectFit="contain"
               layout="responsive"
               height={40}
