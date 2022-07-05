@@ -98,8 +98,7 @@ const Scores = ({ scores }: Props) => {
   );
 };
 
-export async function getServerSideProps(context: { query: { id: string } }) {
-  // export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const q = query(collection(db, context?.query.id as string), orderBy('time'));
 
   const querySnapshot = await getDocs(q);
@@ -119,6 +118,6 @@ export async function getServerSideProps(context: { query: { id: string } }) {
       scores: JSON.stringify(solves),
     },
   };
-}
+};
 
 export default Scores;
