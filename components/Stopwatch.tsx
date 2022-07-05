@@ -50,11 +50,17 @@ export const Stopwatch: React.FC = () => {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
-    }).then(async (result) => {
+    }).then((result) => {
       if (result.isConfirmed) {
-        await deleteDoc(doc(db, user?.email as string, docRef?.id as string));
-        setDocRef(null);
-        Swal.fire('Deleted!', 'Your score has been deleted.', 'success');
+        deleteDoc(doc(db, userId, docRef?.id as string))
+          .then(() => {
+            setDocRef(null);
+            MySwal.fire('Deleted!', 'Your score has been deleted.', 'success');
+          })
+          .catch((error) => {
+            MySwal.fire('Error!', 'An Error has occured', 'error');
+            console.error(error);
+          });
       }
     });
 
