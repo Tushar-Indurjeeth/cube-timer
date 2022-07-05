@@ -31,14 +31,14 @@ const Scores = ({ scores }: Props) => {
   let averageTime: CovertedTime = defaultTime;
   const router = useRouter();
 
-  if (!user || loading || !scores) {
-    return <NextNProgress color="#DC2626" />;
-  } else {
-    JSON.parse(scores).map((score: FirebaseRecord) => solves.push(score));
-    solves?.map((solve: any) => (avgTime += solve.time));
-  }
-
   try {
+    if (!user || loading || !scores) {
+      return <NextNProgress color="#DC2626" />;
+    } else {
+      JSON.parse(scores).map((score: FirebaseRecord) => solves.push(score));
+      solves?.map((solve: any) => (avgTime += solve.time));
+    }
+
     fastestTime = convertTime(solves[0].time);
     slowestTime = convertTime(solves[solves.length - 1].time);
     averageTime = convertTime(avgTime / solves.length);
