@@ -1,4 +1,6 @@
-export const convertTime = (time: number) => {
+import { CovertedTime } from '../typings';
+
+export const convertTime = (time: number): CovertedTime => {
   return {
     centiSeconds: ('0' + (Math.floor(time / 10) % 100)).slice(-2),
     seconds: ('0' + (Math.floor(time / 1000) % 60)).slice(-2),

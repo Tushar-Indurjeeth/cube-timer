@@ -11,22 +11,30 @@ import { convertTime } from '../utils/convertTime';
 import { useRouter } from 'next/router';
 import { Navbar } from '../components/Navbar';
 import { ChevronDoubleLeftIcon } from '@heroicons/react/solid';
+import { CovertedTime, FirebaseRecord } from '../typings';
 
-// todo: fix type values
+interface Props {
+  scores: string;
+}
 
-const Scores = ({ scores }: any) => {
+const Scores = ({ scores }: Props) => {
   const [user, loading] = useAuthState(auth);
-  let solves: any = [];
+  const solves: FirebaseRecord[] = [];
   let avgTime = 0;
-  let fastestTime;
-  let slowestTime;
-  let averageTime;
+  const defaultTime: CovertedTime = {
+    centiSeconds: '00',
+    seconds: '00',
+    minutes: '00',
+  };
+  let fastestTime: CovertedTime = defaultTime;
+  let slowestTime: CovertedTime = defaultTime;
+  let averageTime: CovertedTime = defaultTime;
   const router = useRouter();
 
   if (!user || loading || !scores) {
     return <NextNProgress color="#DC2626" />;
   } else {
-    JSON.parse(scores).map((score: any) => solves.push(score));
+    JSON.parse(scores).map((score: FirebaseRecord) => solves.push(score));
     solves?.map((solve: any) => (avgTime += solve.time));
   }
 
@@ -90,7 +98,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const querySnapshot = await getDocs(q);
 
-  const solves = querySnapshot.docs
+  const solves: FirebaseRecord[] = querySnapshot.docs
     .map((doc) => ({
       id: doc.id,
       ...doc.data(),
