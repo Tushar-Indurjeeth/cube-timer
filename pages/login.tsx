@@ -12,10 +12,10 @@ const Login: NextPage = () => {
   const auth = getAuth();
 
   const signInHandler = () => {
-    signInWithPopup(auth, provider); //.catch((error) => {
-    //   // console.error(error);
-    //   return;
-    // });
+    signInWithPopup(auth, provider).catch((error) => {
+      // console.error(error);
+      return;
+    });
   };
 
   return (
