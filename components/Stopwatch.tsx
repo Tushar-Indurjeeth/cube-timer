@@ -76,7 +76,7 @@ export const Stopwatch: React.FC = () => {
         setSeconds(seconds);
         setMinutes(minutes);
       }, 10);
-    } else if (!timerOn && centiseconds !== '00') {
+    } else if (!timerOn && timerTime !== 0) {
       clearInterval(interval);
     }
 
@@ -96,9 +96,9 @@ export const Stopwatch: React.FC = () => {
   };
 
   const startTimer = () => {
-    setTimerOn(true);
     setTimerTime(0);
     setTimerStart(Date.now() - timerTime);
+    setTimerOn(true);
   };
 
   const stopTimer = () => {
@@ -113,7 +113,7 @@ export const Stopwatch: React.FC = () => {
   const uploadScore = async ({ scramble, time }: Score) => {
     const record: Solve = {
       scramble: scramble,
-      time: time,
+      time: time - 16,
       timestamp: serverTimestamp(),
     };
 
