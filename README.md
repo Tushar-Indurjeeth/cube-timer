@@ -1,11 +1,18 @@
-## Getting Started
+# Cube timer
 
-First, run the development server:
+A website to generate scrambles and save your times for 3x3 rubik's cube solves.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Live demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[https://cube-timer-one.vercel.app/](https://cube-timer-one.vercel.app/)
+
+## Built using
+
+[![My Skills](https://skillicons.dev/icons?i=nextjs,ts,firebase,tailwind,jest)](https://skillicons.dev)
+
+## Platform
+[![My Skills](https://skillicons.dev/icons?i=vercel)](https://skillicons.dev)
+
+## License
+
+Code released under the [MIT License](https://github.com/Tushar-Indurjeeth/cube-timer/blob/0a9659d3e7a8828205f0c17ffd63e5a6f1e2a385/LICENSE).
