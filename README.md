@@ -1,6 +1,6 @@
 # Cube timer
 
-A website to generate scrambles and save your times for 3x3 rubik's cube solves.
+A dektop website to generate scrambles and save your times for 3x3 rubik's cube solves.
 
 ## Live demo
 
