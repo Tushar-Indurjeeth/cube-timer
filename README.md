@@ -1,6 +1,7 @@
 # Cube timer
 
-A dektop website to generate scrambles and save your times for 3x3 rubik's cube solves.
+A desktop website built using Next.js and Tailwind CSS to generate scrambles and save your times for 3x3 rubik's cube solves. 
+Uses Google Authentication to sign into the website and Firebase to store and retrieve the data.
 
 ## Live demo
 
